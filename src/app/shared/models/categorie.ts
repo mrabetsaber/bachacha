@@ -1,4 +1,4 @@
 export class Categorie {
-    id?: string;
-    nom?: string;
+    id: string;
+    nom: string;
 }

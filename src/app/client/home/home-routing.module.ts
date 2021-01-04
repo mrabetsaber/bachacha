@@ -12,8 +12,8 @@ const routes: Routes = [{ path: 'home', component: HomeComponent },
                         {path:'home-products',component:HomeProductsComponent},
                         {path:'home-products-componnent',component:HomeProductsComponent},
                         
-                        //{path : '', redirectTo : 'home', pathMatch : 'full'},
-                      //  {path :'**', component:PageNotFoundComponent}
+                        {path : '', redirectTo : 'home', pathMatch : 'full'},
+                       // {path :'**', component:PageNotFoundComponent}
                          ];
 
 @NgModule({

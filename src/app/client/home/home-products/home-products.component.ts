@@ -1,5 +1,5 @@
-import { Produit } from './../../../shared/models/produit';
-import { CATALOGUE } from './../../../shared/mock-data/catalogue-produits';
+import { ProductService } from './../../../services/product.service';
+
 import { Component, OnInit, OnChanges, ViewChild, ElementRef, HostListener  } from '@angular/core';
 
 
@@ -11,13 +11,17 @@ import { Component, OnInit, OnChanges, ViewChild, ElementRef, HostListener  } fr
 export class HomeProductsComponent implements OnInit {
   
   
-  constructor() { }
+  constructor(private productService:ProductService) { }
   title = "PRODUITS" ;
-  produits = CATALOGUE ;
+  produits = [] ;
   showFiller = false;
-  
+
+  getProducts():void{
+    this.produits=this.productService.getProducts()
+  }
 
   ngOnInit(): void {
+    this.getProducts()
     
   }
   

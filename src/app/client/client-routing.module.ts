@@ -7,14 +7,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  {path : '', component :ClientComponent,
+  {path : 'client', component :ClientComponent,
 children: [
   
   {path: 'home', component: HomeComponent}, 
   {path: 'about', component:AboutComponent}, 
 
 ]},
-{path :'**', component:PageNotFoundComponent}];
+//{path :'**', component:PageNotFoundComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

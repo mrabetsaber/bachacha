@@ -1,0 +1,112 @@
+
+
+<router-outlet></router-outlet>
+<br>
+<h4>tu peux chercher les produit par cathegories </h4>
+<mat-form-field class="example-full-widt" hideRequiredMarker>
+  <mat-label>Chercher par cathegorie</mat-label>
+  <input
+    matInput 
+    class="input-filter"
+    type="text" 
+    
+    placeholder="search....."
+         
+    (input)="filte($event.target.value)"
+    
+    >
+</mat-form-field>
+    
+    
+
+
+
+<table   class="mat-elevation-z8">
+
+ <tr>
+  <th>Name</th>
+  <th>prix</th>
+  <th>cathegorie</th>
+  
+  <th>description</th>
+
+</tr>
+
+<tr *ngFor='let p of FilterProduct' >
+  
+  <td>
+    <mat-accordion>
+      <mat-expansion-panel >
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{p.payload.doc.data().nom}}</mat-panel-title>
+        </mat-expansion-panel-header>
+        
+          <mat-form-field class="example-full-width" hideRequiredMarker>
+            <mat-label>la nouveau nom</mat-label>
+            <input matInput  type="text" placeholder=""  value={{p.payload.doc.data().nom}} (input)="nom=$event.target.value"  >
+          </mat-form-field>
+          <button mat-raised-button (click)="changeNom(p.payload.doc.id)" >modifier</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+</td>
+  <td>
+    <mat-accordion>
+      <mat-expansion-panel >
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{p.payload.doc.data().prix}}</mat-panel-title>
+        </mat-expansion-panel-header>
+        
+          <mat-form-field class="example-full-width" hideRequiredMarker>
+            <mat-label>le nouveau prix</mat-label>
+            <input matInput  type="number"   (input)="prix=$event.target.value" >
+          </mat-form-field>
+          <button mat-raised-button (click)="changePrix(p.payload.doc.id)" >modifier</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+</td>
+  <td>
+    <mat-accordion>
+      <mat-expansion-panel >
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{p.payload.doc.data().cat}}</mat-panel-title>
+        </mat-expansion-panel-header>
+        
+          <mat-form-field class="example-full-width" hideRequiredMarker>
+            <mat-label>la nouveau cathegorie</mat-label>
+            <input matInput  type="text" (input)="cat=$event.target.value"  >
+          </mat-form-field>
+          <button mat-raised-button (click)="changeCat(p.payload.doc.id)" >modifier</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+</td>
+  <td>
+      <mat-accordion>
+        <mat-expansion-panel >
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{p.payload.doc.data().desc}}</mat-panel-title>
+          </mat-expansion-panel-header>
+          
+            <mat-form-field class="example-full-width" hideRequiredMarker>
+              <mat-label>la nouveau description</mat-label>
+              <textarea matInput  type="text" (input)="desc=$event.target.value"  ></textarea>   
+            </mat-form-field>
+            <button mat-raised-button (click)="changeDesc(p.payload.doc.id)" >modifier</button>
+        </mat-expansion-panel>
+      </mat-accordion>
+  </td>
+  
+  <td>
+    <button mat-raised-button style="margin-left: 4%;" (click)="supprimerProd(p.payload.doc.id) " color="warn" >supprimer</button>
+    
+  </td>
+  
+</tr>
+  
+    
+    
+  
+
+  
+
+
+</table>
